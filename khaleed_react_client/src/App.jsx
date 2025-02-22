@@ -1,4 +1,3 @@
-import React from 'react';
 import PromptForm from './components/PromptForm';
 import PromptList from './components/PromptList';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_PROMPTS } from '../graphql/queries';
 import { DELETE_PROMPT } from '../graphql/mutations';

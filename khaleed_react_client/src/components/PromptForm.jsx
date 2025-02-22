@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_PROMPT, DELETE_PROMPT } from '../graphql/mutations';
-import { GET_PROMPTS } from '../graphql/queries';
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_PROMPT } from "../graphql/mutations";
+import { GET_PROMPTS } from "../graphql/queries";
 
 const PromptForm = () => {
   const [formData, setFormData] = useState({
-    chatId: '',
-    prompt: '',
-    response: '',
-    createdAt: '',
-    chatTitle: '',
+    chatId: "",
+    prompt: "",
+    response: "",
+    createdAt: "",
+    chatTitle: "",
     upVotes: 0,
-    downVotes: 0
+    downVotes: 0,
   });
 
   const [addPrompt] = useMutation(ADD_PROMPT, {
-    refetchQueries: [{ query: GET_PROMPTS }]
+    refetchQueries: [{ query: GET_PROMPTS }],
   });
 
   const handleChange = (e) => {
@@ -30,23 +30,28 @@ const PromptForm = () => {
         ...formData,
         upVotes: parseInt(formData.upVotes),
         downVotes: parseInt(formData.downVotes),
-        createdAt: new Date().toISOString()
-      }
+        createdAt: new Date().toISOString(),
+      },
     });
     setFormData({
-      chatId: '',
-      prompt: '',
-      response: '',
-      createdAt: '',
-      chatTitle: '',
+      chatId: "",
+      prompt: "",
+      response: "",
+      createdAt: "",
+      chatTitle: "",
       upVotes: 0,
-      downVotes: 0
+      downVotes: 0,
     });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-6">
-      <h2 className="text-2xl font-bold text-center text-gray-700">Create a New Prompt</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-lg mx-auto p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-6"
+    >
+      <h2 className="text-2xl font-bold text-center text-gray-700">
+        Create a New Prompt
+      </h2>
       <div className="space-y-4">
         <input
           type="text"
